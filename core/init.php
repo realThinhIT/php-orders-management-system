@@ -1,4 +1,6 @@
 <?php 
+@session_start();
+
 $g = new stdClass();
 require_once(CORE_DIR . '/classes/load.class.php');
 
@@ -17,6 +19,7 @@ Loader::loadClasses([
  */
 Loader::performActions([
   'connect-db',
+  'require-models',
   'template',
   'handle-routes'
 ]);

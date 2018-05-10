@@ -45,4 +45,10 @@ class Template {
 
     return $this;
   }
+
+  public function windowAlert($msg = '') {
+    if ($msg) {
+      echo "<script>window.alert('{$msg}');</script>";
+    }
+  }
 }

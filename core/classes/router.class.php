@@ -36,4 +36,9 @@ class Router {
   public function url($resource = '', $action = '', $id = '') {
     return "{$this->baseUrl}/?resource={$resource}&action={$action}&resourceId={$id}";
   }
+
+  public function redirect($redirectTo = '') {
+    @header("Location: {$redirectTo}");
+    echo "<script>window.location.href='{$redirectTo}';</script>";
+  }
 }
