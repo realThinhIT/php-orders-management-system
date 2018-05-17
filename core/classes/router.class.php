@@ -11,9 +11,9 @@ class Router {
 
   function __construct() {
     // get resource 
-    $this->resource = (isset($_GET['resource']) && $_GET['resource'] != '') ? $_GET['resource'] : 'homepage';
-    $this->action   = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : 'index';
-    $this->resourceId = (isset($_GET['resourceId']) && $_GET['resourceId'] != '') ? $_GET['resourceId'] : '';
+    $this->resource = (@$_GET['resource'] != '') ? $_GET['resource'] : 'homepage';
+    $this->action   = (@$_GET['action'] != '') ? $_GET['action'] : 'index';
+    $this->resourceId = (@$_GET['resourceId'] != '') ? $_GET['resourceId'] : '';
   }
 
   function handleRoutes() {

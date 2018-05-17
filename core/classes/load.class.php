@@ -19,4 +19,14 @@ class Loader {
       }
     }
   }
+
+  static public function loadCommonFunction($functions = []) {
+    global $g;
+
+    foreach ($functions as $func) {
+      if (file_exists($filePath = APP_DIR . "/common/{$func}.func.php")) {
+        require_once($filePath);
+      }
+    }
+  }
 }

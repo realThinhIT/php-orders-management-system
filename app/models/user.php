@@ -48,19 +48,60 @@ class User {
     ");
     $stmt->bind_param(
       "ss",
-      $login_username,
-      $login_username
+      $login_username1,
+      $login_username2
     );
-    $login_username = $username;
+    $login_username1 = $username;
+    $login_username2 = $username;
     
     if ($stmt->execute()) {
       while ($user = $stmt->get_result()->fetch_assoc()) {
         if ($user) {
-          return self::verifyPassword($password, $user['password']);
+          return self::verifyPassword($password, $user['password']) ? 
+            $user['id'] 
+            : false;
         }
       }
     }
 
     return false;
+  }
+
+  public static function getUserById($userId = 0) {
+    global $g;
+
+    $stmt = $g->db->prepare("
+      SELECT * FROM `users`
+      WHERE `id` = ? LIMIT 1
+    ");
+    $stmt->bind_param(
+      "s",
+      $id
+    );
+    $id = $userId;
+    
+    if ($stmt->execute()) {
+      while ($user = $stmt->get_result()->fetch_assoc()) {
+        if ($user) {
+          return $user;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  public static function getAllUsers() {
+    global $g;
+
+    $stmt = $g->db->prepare("
+      SELECT * FROM `users`
+    ");
+    
+    if ($stmt->execute()) {
+      return $stmt->get_result();
+    } else {
+      return [];
+    }
   }
 }

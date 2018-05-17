@@ -1,4 +1,5 @@
 <?php 
+ini_set('allow_url_include', '1');
 @session_start();
 
 $g = new stdClass();

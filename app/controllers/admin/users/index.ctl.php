@@ -1,14 +1,14 @@
 <?php 
 Loader::loadCommonFunction(['check-login', 'require-admin']);
 
-$products = Product::getAllProducts();
+$users = User::getAllUsers();
 
 $g->template
   ->setVars([
-    'products' => $products
+    'users' => $users
   ])
   ->renderViews([
     'common/header', 
-    'products/index', 
+    'users/index', 
     'common/footer'
     ]);
