@@ -72,7 +72,7 @@ $(function() {
     });
 
     newRowHTML += `
-      <td>
+      <td class="text-center">
         <i class="action-delete fa fa-trash-o" aria-hidden="true" data-action-id="${newId}"></i>
         <i class="action-edit fa fa-pencil-square-o" data-action-id="${newId}"></i>
       </td>
@@ -165,7 +165,7 @@ $(function() {
       var imgUrl = $('#' + $(this).attr('id') + '_url').html();
 
       if (imgUrl) {
-        $(this).html(`<center><img src='${imgUrl}' style="height: 30px; width: 30px;"></center>`);
+        $(this).html(`<center><a href='${imgUrl}' target='_blank'><img src='${imgUrl}' style="height: 50px; width: 50px;"></a></center>`);
       } else {
         $(this).html('');
       }

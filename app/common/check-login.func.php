@@ -7,8 +7,10 @@ if (
   $g->currentUser = User::getUserById($_SESSION['logged_in_user_id']);
 
   if (!$g->currentUser) {
-    header("Location: " . $g->router->url('login', 'login'));
+    header("Location: " . $g->router->url('xac-thuc', 'login'));
   }
 } else {
-  header("Location: " . $g->router->url('login', 'login'));
+  if ($g->router->resource != 'homepage') {
+    header("Location: " . $g->router->url('xac-thuc', 'login'));
+  }
 }

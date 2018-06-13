@@ -6,3 +6,39 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9 {
 .text-align-right {
   text-align: right !important;
 }
+
+.hero-banner {
+  background-image: url(../../inventory.jpg);
+  background-size: cover;
+  text-align: center;
+  height: 1000px;
+  color: black;
+  padding-top: 260px;
+}
+
+.hero-banner h1, .hero-banner h2, .hero-banner h3, .hero-banner h4 {
+  display: block;
+  text-align: center;
+}
+
+.hero-banner span {
+  background-color: rgb(255,255,255,0.5);
+  padding: 5px;
+}
+
+table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
+  padding: 10px 18px;
+  border-bottom: 0px !important;
+}
+
+table.dataTable.no-footer {
+  border: 0px !important;
+}
+
+td, th {
+  vertical-align: middle !important;
+}
+
+.text-center {
+  text-align: center !important;
+}

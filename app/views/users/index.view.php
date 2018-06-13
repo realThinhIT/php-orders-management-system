@@ -1,42 +1,43 @@
-<div>
+<div class="pb-3">
   <div class="pull-right">
     <button class="btn btn-primary action-new">
-      Thêm người dùng mới
+      <i class="fa fa-plus"></i>
     </button>
   </div>
 
-  <h3>Tất cả người dùng</h3>
+  <h3>QUẢN LÝ KHÁCH HÀNG</h3>
+  <hr>
 </div>
 
 <script>
-  window.app.resourceName = 'admin/users';
-  window.app.columns = ['id', 'name', 'email', 'username', 'telephone_number', 'position'];
+  window.app.resourceName = 'admin/nguoi-dung';
+  window.columns = ['id', 'name', 'email', 'username', 'telephone_number', 'position'];
 </script>
 
-<table class="table table-striped table-bordered dtbl">
+<table class="table table-bordered dtbl">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Name</th>
+      <th scope="col">Tên khách hàng</th>
       <th scope="col">Email</th>
-      <th scope="col">Username</th>
-      <th scope="col">Telephone Number</th>
-      <th scope="col">Position</th>
+      <th scope="col">Tên truy cập</th>
+      <th scope="col">SĐT</th>
+      <th scope="col">Role</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody class="data-table">
     <?php foreach ($users as $user) { ?>
       <tr id="row_<?php echo $user['id']; ?>">
-        <th scope="row"><?php echo $user['id']; ?></th>
+        <th scope="row" class="text-center"><?php echo $user['id']; ?></th>
         <td class="name"><?php echo $user['name']; ?></td>
         <td class="email"><?php echo $user['email']; ?></td>
         <td class="username"><?php echo $user['username']; ?></td>
         <td class="telephone_number"><?php echo $user['telephone_number']; ?></td>
         <td class="position"><?php echo $user['position']; ?></td>
-        <td>
+        <td class="text-center">
+          <i class="action-edit fa fa-pencil" data-action-id="<?php echo $user['id']; ?>"></i>
           <i class="action-delete fa fa-trash-o" aria-hidden="true" data-action-id="<?php echo $user['id']; ?>"></i>
-          <i class="action-edit fa fa-pencil-square-o" data-action-id="<?php echo $user['id']; ?>"></i>
         </td>
       </tr>
     <?php } ?>

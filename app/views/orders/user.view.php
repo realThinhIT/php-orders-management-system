@@ -1,5 +1,6 @@
-<div>
-  <h3>Đơn hàng của tôi</h3>
+<div class="pb-3">
+  <h3>ĐƠN HÀNG CỦA TÔI</h3>
+  <hr>
 </div>
 
 <script>
@@ -9,7 +10,7 @@
   window.app.products = <?php echo json_encode(CommonModel::stmtToArray($products, JSON_UNESCAPED_UNICODE)); ?>;
 </script>
 
-<table class="table table-striped table-bordered dtbl">
+<table class="table table-bordered dtbl">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -21,15 +22,17 @@
   </thead>
   <tbody class="data-table">
     <?php foreach ($orders as $order) { ?>
-      <tr id="row_<?php echo $order['oid']; ?>">
-        <th scope="row"><?php echo $order['oid']; ?></th>
-        <td class="buy_date"><?php echo $order['ocreated_at']; ?></td>
-        <td class="sum_quantity"><?php echo $order['count_products']; ?> sản phẩm (SL: <?php echo $order['sum_quantity']; ?>)</td>
-        <td class="sum_price"><?php echo number_format($order['sum_price'], 0); ?>đ</td>
-        <td>
-          <i class="action-view-order fa fa-book" aria-hidden="true" data-action-id="<?php echo $order['oid']; ?>" data-toggle="modal" data-target="#viewOrderId<?php echo $order['oid']; ?>"></i>
-        </td>
-      </tr>
+      <?php if (@$order['user_id'] == @$g->currentUser['id']) { ?>
+        <tr id="row_<?php echo $order['oid']; ?>">
+          <th scope="row" class="text-center"><?php echo $order['oid']; ?></th>
+          <td class="buy_date"><?php echo $order['ocreated_at']; ?></td>
+          <td class="sum_quantity"><?php echo $order['count_products']; ?> sản phẩm</td>
+          <td class="sum_price"><?php echo number_format($order['sum_price'], 0); ?>đ</td>
+          <td class="text-center">
+            <i class="action-view-order fa fa-book" aria-hidden="true" data-action-id="<?php echo $order['oid']; ?>" data-toggle="modal" data-target="#viewOrderId<?php echo $order['oid']; ?>"></i>
+          </td>
+        </tr>
+      <?php } ?>
     <?php } ?>
   </tbody>
 </table>
@@ -73,6 +76,7 @@
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
+                        <th scope="col"></th>
                         <th scope="col">Tên mặt hàng</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Thành tiền</th>
@@ -82,6 +86,7 @@
                       <?php foreach ($ordersProducts as $product) { ?>
                         <?php if ($product['oid'] == $order['oid']) { ?>
                           <tr>
+                            <td><center><a href='<?php echo $product['image_url']; ?>' target='_blank'><img src='<?php echo $product['image_url']; ?>' style="height: 50px; width: 50px;"></a></center></td>
                             <td><?php echo $product['pname']; ?></td>
                             <td><?php echo $product['quantity']; ?></td>
                             <td><?php echo number_format($product['sum_price'], 0); ?>đ</td>

@@ -5,7 +5,7 @@ $(function() {
     form_data.append('file', file_data);
     console.log(form_data);                        
     $.ajax({
-      url: window.app.root_url + '/?resource=admin/files&action=upload',
+      url: window.app.root_url + '/?resource=admin/upload-files&action=upload',
       dataType: 'text',
       cache: false,
       contentType: false,

@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['logged_in_user_id'] = $user;
 
       $user = User::getUserById(@$_SESSION['logged_in_user_id']);
-      $g->router->redirect($g->router->url($user['position'] . '/orders'));
+      $g->router->redirect($g->router->url($user['position'] . '/don-hang'));
     } else {
       $g->template->windowAlert('Sai tên đăng nhập hoặc mật khẩu, vui lòng thử lại!');
     }
@@ -17,11 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (@$_SESSION['logged_in_user_id']) {
     $user = User::getUserById(@$_SESSION['logged_in_user_id']);
-    $g->router->redirect($g->router->url($user['position'] . '/orders'));
+    $g->router->redirect($g->router->url($user['position'] . '/don-hang'));
     die;
   }
 }
 
+$g->router->redirect($g->router->url('homepage'));
 $g->template->renderViews([
   'common/header', 
   'login/login', 
